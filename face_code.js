@@ -13,69 +13,55 @@
  * eye_value is an integer number of eyes: either 0, 1, 2, or 3
  * mouth_value is how open the mouth is and should generally range from 0.5 to 10
  */
-function orangeAlienFace(tilt_value, eye_value, mouth_value) {
-  const bg_color3 = [71, 222, 219];
-  const fg_color3 = [255, 93, 35];
+function myFace(tilt_value, eye_value, mouth_value) {
+  const bg_color3 = [255];
 
   let headSize = 20
   let eyeSize = 5;
   let centerX = 0;
-  let Iy = -4
+  let iy = -2
   let distactBetweenEyes = 5
-  let MouthDrop = 7
-  
+  let mouthDrop = 7
+
   // rotation in degrees
   angleMode(DEGREES);
   rotate(tilt_value);
 
  // head
   noStroke();
-  fill(fg_color3);
+  let rTransparency = random(255);
+  let rColour = random(1, 5);
+  let highlight1 = [253, 255, 0, rTransparency];
+  let highlight2 = [0, 255, 4, rTransparency];
+  let highlight3 = [0, 197, 255, rTransparency];
+  let highlight4 = [255, 0, 167, rTransparency];
+
+
+  let cColour = int(rColour);
+  console.log(cColour);
+
+  if(cColour == 1){
+    fill(highlight1);
+  }
+  if(cColour == 2){
+    fill(highlight2);
+  }
+  if(cColour == 3){
+    fill(highlight3);
+  }
+  if(cColour == 4){
+    fill(highlight4);
+  }
+
+
   ellipse(centerX, 0, headSize, headSize);
 
   // 2 traditonal eyes
-  if (eye_value === 1 || eye_value == 3) {
     fill(bg_color3);
-    ellipse(centerX, Iy, eyeSize-1,eyeSize);
-   
-  }
-// middle eye
-  if (eye_value >= 2) {
-    fill(bg_color3);
-    ellipse(centerX - distactBetweenEyes, Iy, eyeSize);
-    ellipse(centerX + distactBetweenEyes, Iy, eyeSize );
-  }
+    ellipse(centerX - 3, iy, eyeSize-1,eyeSize);
+    ellipse(centerX + 3, iy, eyeSize-1,eyeSize);
 
   // mouth
   fill(bg_color3);
-  ellipse(centerX, Iy + MouthDrop, distactBetweenEyes, mouth_value);
-}
-
-
-function simplePurpleFace() {
-  fill(234, 122, 244);
-  noStroke();
-  // head
-  ellipse(0, 0, 20);
-  // eyes
-  fill(255, 217, 114);
-  ellipse(-3, -3, 3);
-  ellipse( 3, -3, 3);
-}
-
-/*
- * thinness_value ranges from 0-100 and indicates how thin the face is
- */
-function blockyFace(thinness_value) {
-  // head
-  noStroke();
-  fill(134, 19, 136);
-  let head_width = map(thinness_value, 0, 100, 8, 20);
-  rect(-head_width/2, -9, head_width, 18);
- 
-
-  // eyes
-  fill(234, 122, 244);
-  ellipse(-2, -4, 1);
-  ellipse( 2, -4, 1);
+  ellipse(centerX, iy + mouthDrop, distactBetweenEyes, mouth_value);
 }

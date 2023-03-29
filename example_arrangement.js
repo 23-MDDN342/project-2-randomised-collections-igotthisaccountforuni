@@ -68,20 +68,6 @@ function draw () {
         orangeAlienFace(tilt_value, eye_value, mouth_value);
         pop();
       }
-      else if (i > 0) {
-        // all other faces
-        push();
-        translate(x, y);
-        scale(w/25, h/25);
-        if((i+j)%2 == 0) {
-          simplePurpleFace();
-        }
-        else {
-          thinness_value = random(0, 100);
-          blockyFace(thinness_value);
-        }
-        pop();
-      }
     }
   }
 }

@@ -10,7 +10,7 @@ let lastSwapTime = 0;
 const millisPerSwap = 3000;
 
 // global variables for colors
-const bg_color1 = [71, 222, 219];
+const bg_color1 = [255];
 function setup () {
   // create the drawing canvas, save the canvas element
   let main_canvas = createCanvas(canvasWidth, canvasHeight);
@@ -45,14 +45,15 @@ function draw () {
   background(bg_color1);
   noStroke();
 
-  // draw a 7x4 grid of faces
-  let w = canvasWidth / 7;
-  let h = canvasHeight / 4;
-  for(let i=0; i<4; i++) {
-    for(let j=0; j<7; j++) {
+  // draw grid of faces
+  let w = canvasWidth/20;
+  let h = canvasHeight/13;
+
+  for(let i=0; i<w; i++) {
+    for(let j=0; j<h; j++) {
       let y = h/2 + h*i;
       let x = w/2 + w*j;
-     
+
         // center face
         let eye_value = int(random(2,4));
         let tilt_value = random(-45, 45);
@@ -68,10 +69,10 @@ function draw () {
         push();
         translate(x, y);
         scale(w/25, h/25);
-        
-        orangeAlienFace(tilt_value, eye_value, mouth_value);
+
+        myFace(tilt_value, eye_value, mouth_value);
         pop();
-      
+
     }
   }
 }
