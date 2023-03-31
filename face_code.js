@@ -14,10 +14,10 @@
  * mouth_value is how open the mouth is and should generally range from 0.5 to 10
  */
 function myFace(tilt_value, eye_value, mouth_value) {
-  const bg_color3 = [255];
+  const bg_color3 = [255, 255, 255, 200];
 
   let headSize = 20
-  let eyeSize = 5;
+  let eyeSize = 3;
   let centerX = 0;
   let iy = -2
   let distactBetweenEyes = 5
@@ -31,7 +31,7 @@ function myFace(tilt_value, eye_value, mouth_value) {
   noStroke();
   let rTransparency = random(255);
   let rColour = random(1, 5);
-  let highlight1 = [253, 255, 0, rTransparency];
+  let highlight1 = [255, 154, 0, rTransparency];
   let highlight2 = [0, 255, 4, rTransparency];
   let highlight3 = [0, 197, 255, rTransparency];
   let highlight4 = [255, 0, 167, rTransparency];
@@ -58,8 +58,8 @@ function myFace(tilt_value, eye_value, mouth_value) {
 
   // 2 traditonal eyes
     fill(bg_color3);
-    ellipse(centerX - 3, iy, eyeSize-1,eyeSize);
-    ellipse(centerX + 3, iy, eyeSize-1,eyeSize);
+    ellipse(centerX - 3, iy, eyeSize,eyeSize);
+    ellipse(centerX + 3, iy, eyeSize,eyeSize);
 
   // mouth
   fill(bg_color3);

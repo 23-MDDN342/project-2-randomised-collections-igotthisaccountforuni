@@ -10,7 +10,7 @@ let lastSwapTime = 0;
 const millisPerSwap = 3000;
 
 // global variables for colors
-const bg_color1 = [255];
+const bg_color1 = [0];
 function setup () {
   // create the drawing canvas, save the canvas element
   let main_canvas = createCanvas(canvasWidth, canvasHeight);
@@ -47,7 +47,7 @@ function draw () {
 
   // draw grid of faces
   let w = canvasWidth/20;
-  let h = canvasHeight/13;
+  let h = canvasHeight/12;
 
   for(let i=0; i<w; i++) {
     for(let j=0; j<h; j++) {
@@ -57,18 +57,12 @@ function draw () {
         // center face
         let eye_value = int(random(2,4));
         let tilt_value = random(-45, 45);
-        let mouth_value = random(3,4);
+        let mouth_value = random(1,7);
         let is_cyclops = random(0, 100);
-
-        if(is_cyclops < 10) {
-          eye_value = 1;
-          tilt_value = random(-5, 5);
-          mouth_value = random(0, 1.7);
-        }
 
         push();
         translate(x, y);
-        scale(w/25, h/25);
+        scale(w/15, h/15);
 
         myFace(tilt_value, eye_value, mouth_value);
         pop();
