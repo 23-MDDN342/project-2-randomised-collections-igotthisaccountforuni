@@ -44,7 +44,7 @@ function draw () {
   noStroke();
 
   //nested array for positions
-  let defaultFace = [
+  let smileyFace = [
                           [7, 1], [8, 1], [9, 1], [10, 1], [11, 1], [12, 1],
                     [6, 2],                                                 [13, 2],
             [5, 3],                                                               [14, 3],
@@ -74,10 +74,10 @@ function draw () {
         let adjustY = random(-8, 8);
         let whiteOut = 0;
 
-        if(down == defaultFace[whitePoint][1]){
-          if(across == defaultFace[whitePoint][0]){
+        if(down == smileyFace[whitePoint][1]){
+          if(across == smileyFace[whitePoint][0]){
             whiteOut = 1;
-            if(whitePoint < defaultFace.length-1){
+            if(whitePoint < smileyFace.length-1){
               whitePoint++;
             }
           }
@@ -88,7 +88,7 @@ function draw () {
         translate(x + adjustX, y + adjustY);
         scale(w/15, h/15);
 
-        myFace(tilt_value, eye_value, mouth_value, whiteOut);
+        myFace(tilt_value, mouth_value, whiteOut);
         pop();
 
     }

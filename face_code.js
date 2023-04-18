@@ -13,7 +13,7 @@
  * eye_value is an integer number of eyes: either 0, 1, 2, or 3
  * mouth_value is how open the mouth is and should generally range from 0.5 to 10
  */
-function myFace(tilt_value, eye_value, mouth_value, whiteOut) {
+function myFace(tilt_value, mouth_value, whiteOut) {
   const bg_color3 = [255, 255, 255, 200];
 
   let headSize = 20;
