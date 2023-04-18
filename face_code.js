@@ -29,7 +29,7 @@ function myFace(tilt_value, eye_value, mouth_value) {
 
  // head
   noStroke();
-  let rTransparency = random(255);
+  let rTransparency = random(60, 255);
   let rColour = random(1, 5);
   let highlight1 = [255, 154, 0, rTransparency];
   let highlight2 = [0, 255, 4, rTransparency];
