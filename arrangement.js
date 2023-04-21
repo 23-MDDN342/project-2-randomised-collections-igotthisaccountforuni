@@ -9,8 +9,7 @@ let curRandomSeed = 0;
 let lastSwapTime = 0;
 const millisPerSwap = 3000;
 
-// global variables for colors
-const bg_color1 = [0];
+// global variables
 function setup () {
   // create the drawing canvas, save the canvas element
   let main_canvas = createCanvas(canvasWidth, canvasHeight);
@@ -40,7 +39,7 @@ function draw () {
   randomSeed(curRandomSeed);
 
   // clear screen
-  background(bg_color1);
+  background(0);
   noStroke();
 
   //nested array for positions
@@ -54,12 +53,38 @@ function draw () {
     [4, 7],               [7, 7],                                   [12, 7],              [15, 7],
             [5, 8],               [8, 8], [9, 8], [10, 8], [11, 8],                [14, 8],
                     [6, 9],                                                 [13, 9],
-                      [7, 10], [8, 10], [9, 10], [10, 10], [11, 10], [12, 10]];
+                      [7, 10], [8, 10], [9, 10], [10, 10], [11, 10], [12, 10]
+  ];
+
+  let frownyFace = [
+                            [7, 1], [8, 1], [9, 1], [10, 1], [11, 1], [12, 1],
+                      [6, 2],                                                 [13, 2],
+              [5, 3],                                                               [14, 3],
+      [4, 4],               [7, 4], [8, 4],                  [11, 4], [12, 4],              [15, 4],
+      [4, 5],               [7, 5], [8, 5],                  [11, 5], [12, 5],              [15, 5],
+      [4, 6],                                                                               [15, 6],
+      [4, 7],                       [8, 7], [9, 7], [10, 7], [11, 7],                       [15, 7],
+              [5, 8],       [7, 8],                                   [12, 8],       [14, 8],
+                      [6, 9],                                                 [13, 9],
+                        [7, 10], [8, 10], [9, 10], [10, 10], [11, 10], [12, 10]
+  ];
 
   // draw grid of faces
   let w = canvasWidth/20;
   let h = canvasHeight/12;
   let whitePoint = 0;
+  let chosenFace = [];
+  let chooser = 1;
+
+
+  if(chooser = 1){
+    arrayCopy(smileyFace, chosenFace);
+  }
+  else if(chooser = 2){
+    arrayCopy(frownyFace, chosenFace);
+  }
+
+  console.log(chosenFace)
 
   for(let down = 0; down < 12; down++) {
     for(let across = 0; across < 20; across++) {
@@ -74,10 +99,10 @@ function draw () {
         let adjustY = random(-8, 8);
         let whiteOut = 0;
 
-        if(down == smileyFace[whitePoint][1]){
-          if(across == smileyFace[whitePoint][0]){
+        if(down == chosenFace[whitePoint][1]){
+          if(across == chosenFace[whitePoint][0]){
             whiteOut = 1;
-            if(whitePoint < smileyFace.length-1){
+            if(whitePoint < chosenFace.length-1){
               whitePoint++;
             }
           }
