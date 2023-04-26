@@ -43,6 +43,19 @@ function draw () {
   noStroke();
 
   //nested array for positions
+  let noFace = [
+                            [7, 1], [8, 1], [9, 1], [10, 1], [11, 1], [12, 1],
+                      [6, 2],                                                 [13, 2],
+              [5, 3],       [7, 3],                                   [12, 3],       [14, 3],
+      [4, 4],                       [8, 4],                  [11, 4],                       [15, 4],
+      [4, 5],                               [9, 5], [10, 5],                                [15, 5],
+      [4, 6],                               [9, 6], [10, 6],                                [15, 6],
+      [4, 7],                       [8, 7],                   [11, 7],                      [15, 7],
+              [5, 8],       [7, 8],                                   [12, 8],       [14, 8],
+                      [6, 9],                                                 [13, 9],
+                        [7, 10], [8, 10], [9, 10], [10, 10], [11, 10], [12, 10]
+  ];
+
   let smileyFace = [
                           [7, 1], [8, 1], [9, 1], [10, 1], [11, 1], [12, 1],
                     [6, 2],                                                 [13, 2],
@@ -69,22 +82,24 @@ function draw () {
                         [7, 10], [8, 10], [9, 10], [10, 10], [11, 10], [12, 10]
   ];
 
+
+
   // draw grid of faces
   let w = canvasWidth/20;
   let h = canvasHeight/12;
   let whitePoint = 0;
   let chosenFace = [];
-  let chooser = 1;
+  let chooser = 2;//int(random(1,3));
 
-
-  if(chooser = 1){
+  if(chooser == 1){
+    arrayCopy(noFace, chosenFace);
+  }
+  if(chooser == 2){
     arrayCopy(smileyFace, chosenFace);
   }
-  else if(chooser = 2){
+  if(chooser == 3){
     arrayCopy(frownyFace, chosenFace);
   }
-
-  console.log(chosenFace)
 
   for(let down = 0; down < 12; down++) {
     for(let across = 0; across < 20; across++) {
@@ -95,8 +110,8 @@ function draw () {
         let eye_value = int(random(2,4));
         let tilt_value = random(-45, 45);
         let mouth_value = random(1,7);
-        let adjustX = random(-8, 8);
-        let adjustY = random(-8, 8);
+        let adjustX = random(-10, 10);
+        let adjustY = random(-10, 10);
         let whiteOut = 0;
 
         if(down == chosenFace[whitePoint][1]){
@@ -107,7 +122,6 @@ function draw () {
             }
           }
         }
-
 
         push();
         translate(x + adjustX, y + adjustY);
@@ -128,3 +142,11 @@ function keyTyped() {
     saveBlocksImages(true);
   }
 }
+
+// function arrayCopy(source, print){
+//   for(i = print.length; i < source.length ; i++){
+//     for(j = 0; j < source[i].length; j++){
+//       source[i][j] = print[i][j];
+//     }
+//   }
+// }
