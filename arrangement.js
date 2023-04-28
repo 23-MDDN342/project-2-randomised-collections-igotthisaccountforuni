@@ -5,7 +5,7 @@
 const canvasWidth = 960;
 const canvasHeight = 500;
 let curRandomSeed = 0;
-
+let chooser;
 let lastSwapTime = 0;
 const millisPerSwap = 3000;
 
@@ -16,14 +16,14 @@ function setup () {
   main_canvas.parent('canvasContainer');
 
   curRandomSeed = int(random(0, 1000));
-
-  // rotation in degrees
+  chooser = int(random(1,5));
   angleMode(DEGREES);
 }
 
 function changeRandomSeed() {
   curRandomSeed = curRandomSeed + 1;
   lastSwapTime = millis();
+  chooser = int(random(1,5));
 }
 
 function mouseClicked() {
@@ -82,6 +82,19 @@ function draw () {
                         [7, 10], [8, 10], [9, 10], [10, 10], [11, 10], [12, 10]
   ];
 
+  let evilFace = [
+                          [7, 1], [8, 1], [9, 1], [10, 1], [11, 1], [12, 1],
+                    [6, 2],                                                 [13, 2],
+            [5, 3], [6, 3],                                                 [13, 3], [14, 3],
+    [4, 4],               [7, 4],                                   [12, 4],              [15, 4],
+    [4, 5],                       [8, 5],                  [11, 5],                       [15, 5],
+    [4, 6],                                                                               [15, 6],
+    [4, 7],               [7, 7],                                   [12, 7],              [15, 7],
+            [5, 8],               [8, 8], [9, 8], [10, 8], [11, 8],                [14, 8],
+                    [6, 9],                                                 [13, 9],
+                      [7, 10], [8, 10], [9, 10], [10, 10], [11, 10], [12, 10]
+  ];
+
 
 
   // draw grid of faces
@@ -89,7 +102,6 @@ function draw () {
   let h = canvasHeight/12;
   let whitePoint = 0;
   let chosenFace = [];
-  let chooser = 2;//int(random(1,3));
 
   if(chooser == 1){
     arrayCopy(noFace, chosenFace);
@@ -99,6 +111,9 @@ function draw () {
   }
   if(chooser == 3){
     arrayCopy(frownyFace, chosenFace);
+  }
+  if(chooser == 4){
+    arrayCopy(evilFace, chosenFace);
   }
 
   for(let down = 0; down < 12; down++) {
@@ -142,11 +157,3 @@ function keyTyped() {
     saveBlocksImages(true);
   }
 }
-
-// function arrayCopy(source, print){
-//   for(i = print.length; i < source.length ; i++){
-//     for(j = 0; j < source[i].length; j++){
-//       source[i][j] = print[i][j];
-//     }
-//   }
-// }
