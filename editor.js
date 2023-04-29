@@ -85,7 +85,7 @@ function draw () {
   push();
   if (mode == '1') {
    // draw face using values mapped from 3 sliders
-   let tilt_value = map(s1, 0, 100, -90, 90);
+   let tilt_value = map(s1, 0, 100, -180, 180);
    let mouth_value = map(s2, 0, 100, 0.5, 10);
    let whiteOut = int(map(s3, 0, 100, 0, 1));
    myFace(tilt_value, mouth_value, whiteOut);
