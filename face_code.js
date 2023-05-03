@@ -1,81 +1,64 @@
 /*
  * This file should contain code that draws your faces.
- *
- * Each function takes parameters and draws a face that is within
- * the bounding box (-10, -10) to (10, 10).
- *
- * These functions are used by your final arrangement of faces as well as the face editor.
  */
 
+ // function getAveragedRandom(min, max, n){
+ //   let sum = 0;
+ //   for(let i = 0 ; i < n ; i++){
+ //     sum = sum + random(min, max);
+ //   }
+ //   return sum / n;
+ // }
 
-/*
- * tilt_value is in degrees
- * eye_value is an integer number of eyes: either 0, 1, 2, or 3
- * mouth_value is how open the mouth is and should generally range from 0.5 to 10
- */
-function orangeAlienFace(tilt_value, eye_value, mouth_value) {
-  const bg_color3 = [71, 222, 219];
-  const fg_color3 = [255, 93, 35];
-
-  let headSize = 20
-  let eyeSize = 5;
+function myFace(rotationValue, mouthValue, whiteOut, rTransparency, rColour) {
+  const whiteDetails = [255, 255, 255, 200];
+  let headSize = 20;
+  let eyeSize = 3;//getAveragedRandom(1, 5, 4);
   let centerX = 0;
-  let Iy = -4
-  let distactBetweenEyes = 5
-  let MouthDrop = 7
-  
+
   // rotation in degrees
   angleMode(DEGREES);
-  rotate(tilt_value);
+  rotate(rotationValue);
 
  // head
   noStroke();
-  fill(fg_color3);
+
+  let highlights = [
+    [255, 154, 0, rTransparency],
+    [0, 255, 4, rTransparency],
+    [0, 197, 255, rTransparency],
+    [255, 0, 167, rTransparency]
+  ];
+
+  //colour determination
+  if(whiteOut == 0){
+    let cColour = int(rColour);
+    if(cColour == 1){
+      fill(highlights[0]);
+    }
+    if(cColour == 2){
+      fill(highlights[1]);
+    }
+    if(cColour == 3){
+      fill(highlights[2]);
+    }
+    if(cColour == 4){
+      fill(highlights[3]);
+    }
+  }else if(whiteOut == 1){
+    fill(whiteDetails);
+    stroke(255);
+  }
+
+  //head
   ellipse(centerX, 0, headSize, headSize);
 
-  // 2 traditonal eyes
-  if (eye_value === 1 || eye_value == 3) {
-    fill(bg_color3);
-    ellipse(centerX, Iy, eyeSize-1,eyeSize);
-   
-  }
-// middle eye
-  if (eye_value >= 2) {
-    fill(bg_color3);
-    ellipse(centerX - distactBetweenEyes, Iy, eyeSize);
-    ellipse(centerX + distactBetweenEyes, Iy, eyeSize );
-  }
+  // eyes
+    fill(whiteDetails);
+    ellipse(centerX - 3, -2, eyeSize,eyeSize);
+    ellipse(centerX + 3, -2, eyeSize,eyeSize);
 
   // mouth
-  fill(bg_color3);
-  ellipse(centerX, Iy + MouthDrop, distactBetweenEyes, mouth_value);
-}
-
-
-function simplePurpleFace() {
-  fill(234, 122, 244);
-  noStroke();
-  // head
-  ellipse(0, 0, 20);
-  // eyes
-  fill(255, 217, 114);
-  ellipse(-3, -3, 3);
-  ellipse( 3, -3, 3);
-}
-
-/*
- * thinness_value ranges from 0-100 and indicates how thin the face is
- */
-function blockyFace(thinness_value) {
-  // head
-  noStroke();
-  fill(134, 19, 136);
-  let head_width = map(thinness_value, 0, 100, 8, 20);
-  rect(-head_width/2, -9, head_width, 18);
- 
-
-  // eyes
-  fill(234, 122, 244);
-  ellipse(-2, -4, 1);
-  ellipse( 2, -4, 1);
+  fill(whiteDetails);
+  ellipse(centerX, 5, 5, mouthValue);
 }
