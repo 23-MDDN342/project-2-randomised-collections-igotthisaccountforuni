@@ -10,24 +10,19 @@
  //   return sum / n;
  // }
 
-function myFace(tilt_value, mouth_value, whiteOut) {
+function myFace(rotationValue, mouthValue, whiteOut, rTransparency, rColour) {
   const whiteDetails = [255, 255, 255, 200];
-
   let headSize = 20;
   let eyeSize = 3;//getAveragedRandom(1, 5, 4);
   let centerX = 0;
-  let iy = -2;
-  let distactBetweenEyes = 5;
-  let mouthDrop = 7;
 
   // rotation in degrees
   angleMode(DEGREES);
-  rotate(tilt_value);
+  rotate(rotationValue);
 
  // head
   noStroke();
-  let rTransparency = random(60, 220);
-  let rColour = random(1, 5);
+
   let highlights = [
     [255, 154, 0, rTransparency],
     [0, 255, 4, rTransparency],
@@ -58,10 +53,10 @@ function myFace(tilt_value, mouth_value, whiteOut) {
 
   // 2 traditonal eyes
     fill(whiteDetails);
-    ellipse(centerX - 3, iy, eyeSize,eyeSize);
-    ellipse(centerX + 3, iy, eyeSize,eyeSize);
+    ellipse(centerX - 3, -2, eyeSize,eyeSize);
+    ellipse(centerX + 3, -2, eyeSize,eyeSize);
 
   // mouth
   fill(whiteDetails);
-  ellipse(centerX, iy + mouthDrop, distactBetweenEyes, mouth_value);
+  ellipse(centerX, 5, 5, mouthValue);
 }

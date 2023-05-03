@@ -155,8 +155,8 @@ function draw () {
       let x = w/2 + w*across;
 
         // center face
-        let tilt_value = random(-180, 180);
-        let mouth_value = random(1,7);
+        let rotationValue = random(-180, 180);
+        let mouthValue = random(1,7);
         let adjustX = random(-10, 10);
         let adjustY = random(-10, 10);
         let whiteOut = 0;
@@ -174,7 +174,10 @@ function draw () {
         translate(x + adjustX, y + adjustY);
         scale(w/15, w/15);
 
-        myFace(tilt_value, mouth_value, whiteOut);
+        let rTransparency = random(60, 220);
+        let rColour = random(1, 5);
+
+        myFace(rotationValue, mouthValue, whiteOut, rTransparency, rColour);
         pop();
 
     }

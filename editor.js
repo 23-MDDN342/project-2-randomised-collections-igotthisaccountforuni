@@ -20,22 +20,23 @@ function setup () {
   slider1 = createSlider(0, 100, 50);
   slider2 = createSlider(0, 100, 50);
   slider3 = createSlider(0, 100, 50);
+  slider4 = createSlider(0, 100, 50);
+  slider5 = createSlider(0, 100, 50);
 
   slider1.parent('slider1Container');
   slider2.parent('slider2Container');
   slider3.parent('slider3Container');
+  slider4.parent('slider4Container');
+  slider5.parent('slider5Container');
 
   faceGuideCheckbox = createCheckbox('', false);
   faceGuideCheckbox.parent('checkbox1Container');
 
   faceSelector = createSelect();
   faceSelector.option('1');
-  faceSelector.option('2');
-  faceSelector.option('3');
   faceSelector.value('1');
   faceSelector.parent('selector1Container');
 }
-
 
 
 function draw () {
@@ -48,6 +49,8 @@ function draw () {
   let s1 = slider1.value();
   let s2 = slider2.value();
   let s3 = slider3.value();
+  let s4 = slider4.value();
+  let s5 = slider5.value();
 
   let show_face_guide = faceGuideCheckbox.checked();
 
@@ -64,18 +67,16 @@ function draw () {
   push();
   if (mode == '1') {
    // draw face using values mapped from 3 sliders
-   let tilt_value = map(s1, 0, 100, -180, 180);
-   let mouth_value = map(s2, 0, 100, 0.5, 10);
+   let rotationValue = map(s1, 0, 100, -180, 180);
+   let mouthValue = map(s2, 0, 100, 0.5, 10);
    let whiteOut = int(map(s3, 0, 100, 0, 1));
-   myFace(tilt_value, mouth_value, whiteOut);
-  }
+   let rColour = int(map(s4, 0, 100, 1, 4));
+   let rTransparency = map(s5, 0, 100, 0, 255);
 
-  if (mode == '2') {
-     // let slider value 1 indicate thinness
-     blockyFace(s1);
-  }
-  if (mode == '3') {
-    simplePurpleFace();
+   console.log(rColour);
+   console.log(rTransparency);
+
+   myFace(rotationValue, mouthValue, whiteOut, rTransparency, rColour);
   }
 
   pop();
