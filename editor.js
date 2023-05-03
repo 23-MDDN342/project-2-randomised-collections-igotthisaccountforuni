@@ -73,9 +73,6 @@ function draw () {
    let rColour = int(map(s4, 0, 100, 1, 4));
    let rTransparency = map(s5, 0, 100, 0, 255);
 
-   console.log(rColour);
-   console.log(rTransparency);
-
    myFace(rotationValue, mouthValue, whiteOut, rTransparency, rColour);
   }
 

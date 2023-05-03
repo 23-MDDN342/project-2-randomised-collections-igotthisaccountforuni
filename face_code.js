@@ -30,6 +30,7 @@ function myFace(rotationValue, mouthValue, whiteOut, rTransparency, rColour) {
     [255, 0, 167, rTransparency]
   ];
 
+  //colour determination
   if(whiteOut == 0){
     let cColour = int(rColour);
     if(cColour == 1){
@@ -49,9 +50,10 @@ function myFace(rotationValue, mouthValue, whiteOut, rTransparency, rColour) {
     stroke(255);
   }
 
+  //head
   ellipse(centerX, 0, headSize, headSize);
 
-  // 2 traditonal eyes
+  // eyes
     fill(whiteDetails);
     ellipse(centerX - 3, -2, eyeSize,eyeSize);
     ellipse(centerX + 3, -2, eyeSize,eyeSize);

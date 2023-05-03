@@ -130,6 +130,7 @@ function draw () {
   let whitePoint = 0;
   let chosenFace = [];
 
+  //use chooser to pick a face
   if(chooser == 1){
     arrayCopy(noFace, chosenFace);
   }
@@ -149,6 +150,7 @@ function draw () {
     arrayCopy(flatFace, chosenFace);
   }
 
+  //for loop to draw grid
   for(let down = 0; down < 12; down++) {
     for(let across = 0; across < 20; across++) {
       let y = h/2 + h*down;
@@ -169,13 +171,14 @@ function draw () {
             }
           }
         }
-
-        push();
-        translate(x + adjustX, y + adjustY);
-        scale(w/15, w/15);
-
+        //colour variables
         let rTransparency = random(60, 220);
         let rColour = random(1, 5);
+
+        push();
+        //shuffling the grid around
+        translate(x + adjustX, y + adjustY);
+        scale(w/15, w/15);
 
         myFace(rotationValue, mouthValue, whiteOut, rTransparency, rColour);
         pop();
