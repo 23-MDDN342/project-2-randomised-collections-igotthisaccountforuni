@@ -2,11 +2,19 @@
  * This file should contain code that draws your faces.
  */
 
+ // function getAveragedRandom(min, max, n){
+ //   let sum = 0;
+ //   for(let i = 0 ; i < n ; i++){
+ //     sum = sum + random(min, max);
+ //   }
+ //   return sum / n;
+ // }
+
 function myFace(tilt_value, mouth_value, whiteOut) {
   const whiteDetails = [255, 255, 255, 200];
 
   let headSize = 20;
-  let eyeSize = 3;
+  let eyeSize = 3;//getAveragedRandom(1, 5, 4);
   let centerX = 0;
   let iy = -2;
   let distactBetweenEyes = 5;

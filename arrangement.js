@@ -155,7 +155,6 @@ function draw () {
       let x = w/2 + w*across;
 
         // center face
-        let eye_value = int(random(2,4));
         let tilt_value = random(-180, 180);
         let mouth_value = random(1,7);
         let adjustX = random(-10, 10);
